@@ -10,14 +10,20 @@ import numpy as np
 # ========================================================================
 
 @click.command()
-@click.argument('csvfile', type=str)
+@click.argument('fname', type=str)
 def main(**kwargs):
-    df = pd.DataFrame.from_csv(kwargs['csvfile'], index_col=None)
+    if ('pkl' in kwargs['fname']) | ('pic' in kwargs['fname']):
+        with open(kwargs['fname'], 'rb') as f:
+            cat = pickle.load(f)
+    elif 'csv' in kwargs['fname']:
+        cat = pd.DataFrame.from_csv(kwargs['fname'], index_col=None)
+
 
 
 
     import ipdb; ipdb.set_trace()
-    # csv loaded into dataframe 'df'
+    # file loaded into object 'cat'
+
 
 
 
