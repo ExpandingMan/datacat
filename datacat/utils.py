@@ -10,6 +10,24 @@ import datetime
 # ==========================================================================================
 
 
+def loadpkl(filename):
+    """
+    Loads whatever is in the pickle in the file at filename.
+    """
+    with open(filename, 'rb') as f:
+        pkl = pickle.load(f)
+    return pkl
+
+
+def dumppkl(pkl, filename):
+    """
+    Dumps the object pkl to file at filename.  This should be used instead of, for instance,
+    pandas.to_pickle because it uses a modern protocol.
+    """
+    with open(filename, 'wb') as f:
+        pickle.dump(pkl, f)
+
+
 def disaggregate(df, col):
     """
     Disaggregates a dataframe, so that there are col[index] copies of each row.
