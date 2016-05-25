@@ -15,6 +15,7 @@ def main(**kwargs):
     if ('pkl' in kwargs['fname']) | ('pic' in kwargs['fname']):
         with open(kwargs['fname'], 'rb') as f:
             cat = pickle.load(f)
+        print('Object of type:', type(cat))
     elif 'csv' in kwargs['fname']:
         cat = pd.DataFrame.from_csv(kwargs['fname'], index_col=None)
 
